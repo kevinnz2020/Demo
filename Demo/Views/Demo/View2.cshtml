@@ -1,15 +1,11 @@
 ﻿@model Demo.Models.DiscountModel;
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "View2";
     Layout = "~/Views/Shared/_Layout.cshtml";
-
     var result = (Demo.Models.DiscountModel)ViewData["result"];
-
 }
 
-
-
-<form asp-action="Index" method="post">
+<form asp-action="View2" method="post">
     <div asp-validation-summary="All"></div>
     <div class="container">
         <h1>Discount Calculator</h1>
@@ -64,7 +60,7 @@
                 <label asp-for="ListPrice">List Price</label>
             </div>
             <div class="input-group col-3">
-                <input type="text" class="form-control" asp-for="ListPrice" />
+                <input id="txtPrice" type="text" class="form-control" asp-for="ListPrice" />
                 <span class="input-group-text">$</span>
             </div>
         </div>
@@ -119,17 +115,46 @@
                 <button type="reset" class="btn btn-outline-primary mr-1">Reset</button>
             </div>
             <div class="col-3">
-                <button type="submit" class="btn btn-outline-danger">Submit</button>
+                <button id="submitButton" type="submit" class="btn btn-outline-danger">Submit</button>
             </div>
 
-            <div class="col-3">
-                
-                <a asp-controller="Demo" asp-action="View2">
-                    <input type="button" class="btn btn-outline-primary" value="VIEW 2" />
-                </a>
-            </div>
+           
 
         </div>
-        
+
     </div>
 </form>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#submitButton").click(function () {
+
+          $.ajax({
+                type: "POST",
+                url: "/Demo/View2",
+                dataType: 'json',
+                contentType: "application/json",
+                data: JSON.stringify({ listprice: ListPrice, discount: Discount, weightId: WeightId}),
+                success: function (data) {
+                    if (data.Success) {
+                        alert(data);
+                    }
+                    else {
+                        window.location.href = '@Url.Action("Demo","Index")';
+                    }
+                },
+                error: function (data) {
+                    alert("Something went wrong")
+                }
+            });
+
+         );
+
+
+
+
+    });
+
+
+</script>

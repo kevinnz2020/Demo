@@ -1,15 +1,18 @@
-﻿@model Demo.Models.DiscountModel;
+﻿
+
+
+@model Demo.Models.DiscountModel;
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "UpdateResult";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
-    var result = (Demo.Models.DiscountModel)ViewData["result"];
+
 
 }
 
 
 
-<form asp-action="Index" method="post">
+
     <div asp-validation-summary="All"></div>
     <div class="container">
         <h1>Discount Calculator</h1>
@@ -73,7 +76,7 @@
                 <label asp-for="LessDiscount">Less Discount</label>
             </div>
             <div class="input-group col-3">
-                <input type="text" class="form-control" asp-for=@result.LessDiscount />
+                <input type="text" class="form-control" asp-for=LessDiscount />
                 <span class="input-group-text">$</span>
             </div>
         </div>
@@ -85,7 +88,7 @@
                 <label asp-for="AfterDiscount">After Discount</label>
             </div>
             <div class="input-group col-3">
-                <input type="text" class="form-control" asp-for=@result.AfterDiscount />
+                <input type="text" class="form-control" asp-for=AfterDiscount />
                 <span class="input-group-text">$</span>
             </div>
         </div>
@@ -95,7 +98,7 @@
                 <label asp-for="PlusFreight">Plus Freight</label>
             </div>
             <div class="input-group col-3">
-                <input type="text" class="form-control" asp-for=@result.PlusFreight />
+                <input type="text" class="form-control" asp-for=PlusFreight />
                 <span class="input-group-text">$</span>
             </div>
         </div>
@@ -106,7 +109,7 @@
                 <label asp-for="Net">Net</label>
             </div>
             <div class="input-group col-3">
-                <input type="text" class="form-control" asp-for=@result.Net />
+                <input type="text" class="form-control" asp-for=Net />
 
                 <span class="input-group-text">$</span>
             </div>
@@ -114,22 +117,15 @@
 
         <br />
 
-        <div class="row d-flex justify-content-center">
-            <div class="col-3">
-                <button type="reset" class="btn btn-outline-primary mr-1">Reset</button>
+        <div class="row">
+            <div class="col-2">
+                <button type="button" class="btn btn-outline-primary mr-1">Reset</button>
             </div>
             <div class="col-3">
-                <button type="submit" class="btn btn-outline-danger">Submit</button>
+                <button type="submit" class="btn btn-outline-danger float-right">Submit</button>
             </div>
-
-            <div class="col-3">
-                
-                <a asp-controller="Demo" asp-action="View2">
-                    <input type="button" class="btn btn-outline-primary" value="VIEW 2" />
-                </a>
-            </div>
-
         </div>
-        
+
     </div>
-</form>
+
+
