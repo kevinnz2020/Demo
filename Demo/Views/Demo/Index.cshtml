@@ -11,36 +11,36 @@
 
 <form asp-action="Index" method="post">
     <div asp-validation-summary="All"></div>
-    <div class="container">
+    <div class="container" style="width:40%">
         <h1>Discount Calculator</h1>
         <div class="row">
-            <div class="col-4"><strong>Inputs</strong></div>
+            <div class="col-md-12"><strong>Inputs</strong></div>
         </div>
         <br />
         <div class="row">
-            <div class="col-2">
+            <div class="col-md-6">
                 <label asp-for="ListPrice">List Price:</label>
             </div>
-            <div class="input-group col-3">
+            <div class="input-group col-md-6">
                 <span class="input-group-text">$</span>
-                <input type="text" class="form-control" asp-for="ListPrice" />
+                <input type="text" class="form-control" asp-for="ListPrice" asp-format="{0:N2}"/>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-2">
+            <div class="col-md-6">
                 <label asp-for="Discount">Discount:</label>
             </div>
-            <div class="input-group col-3">
-                <input type="text" class="form-control" asp-for="Discount" />
+            <div class="input-group col-md-6">
+                <input type="text" class="form-control" asp-for="Discount" asp-format="{0:N1}" />
                 <span class="input-group-text">%</span>
             </div>
         </div>
         <div class="row">
-            <div class="col-2">
+            <div class="col-md-6">
                 <label asp-for="WeightId">Weight:</label>
             </div>
-            <div class="input-group col-3">
+            <div class="input-group col-md-6">
 
 
 
@@ -56,24 +56,24 @@
         <br />
 
         <div class="row">
-            <div class="col-4"><strong>Output</strong></div>
+            <div class="col-md-12"><strong>Output</strong></div>
         </div>
 
         <div class="row">
-            <div class="col-2">
+            <div class="col-md-6">
                 <label asp-for="ListPrice">List Price</label>
             </div>
-            <div class="input-group col-3">
-                <input type="text" class="form-control" asp-for="ListPrice" />
+            <div class="input-group col-md-6">
+                <input type="text" class="form-control" asp-for="ListPrice" asp-format="{0:N2}"/>
                 <span class="input-group-text">$</span>
             </div>
         </div>
         <div class="row">
-            <div class="col-2">
+            <div class="col-md-6">
                 <label asp-for="LessDiscount">Less Discount</label>
             </div>
-            <div class="input-group col-3">
-                <input type="text" class="form-control" asp-for=@result.LessDiscount />
+            <div class="input-group col-md-6">
+                <input type="text" class="form-control" asp-for=@result.LessDiscount asp-format="{0:N2}"/>
                 <span class="input-group-text">$</span>
             </div>
         </div>
@@ -81,32 +81,32 @@
 
 
         <div class="row">
-            <div class="col-2">
+            <div class="col-md-6">
                 <label asp-for="AfterDiscount">After Discount</label>
             </div>
-            <div class="input-group col-3">
-                <input type="text" class="form-control" asp-for=@result.AfterDiscount />
+            <div class="input-group col-md-6">
+                <input type="text" class="form-control" asp-for=@result.AfterDiscount asp-format="{0:N2}"/>
                 <span class="input-group-text">$</span>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-2">
+            <div class="col-md-6">
                 <label asp-for="PlusFreight">Plus Freight</label>
             </div>
-            <div class="input-group col-3">
-                <input type="text" class="form-control" asp-for=@result.PlusFreight />
+            <div class="input-group col-md-6">
+                <input type="text" class="form-control" asp-for=@result.PlusFreight asp-format="{0:N2}"/>
                 <span class="input-group-text">$</span>
             </div>
         </div>
 
 
         <div class="row">
-            <div class="col-2">
+            <div class="col-md-6">
                 <label asp-for="Net">Net</label>
             </div>
-            <div class="input-group col-3">
-                <input type="text" class="form-control" asp-for=@result.Net />
+            <div class="input-group col-md-6">
+                <input type="text" class="form-control" asp-for=@result.Net asp-format="{0:N2}"/>
 
                 <span class="input-group-text">$</span>
             </div>
@@ -115,18 +115,23 @@
         <br />
 
         <div class="row d-flex justify-content-center">
-            <div class="col-3">
+            <div class="col-md-4">
                 <button type="reset" class="btn btn-outline-primary mr-1">Reset</button>
             </div>
-            <div class="col-3">
+            <div class="col-md-4">
                 <button type="submit" class="btn btn-outline-danger">Submit</button>
             </div>
 
-            <div class="col-3">
+            <div class="col-md-4">
                 
-                <a asp-controller="Demo" asp-action="View2">
-                    <input type="button" class="btn btn-outline-primary" value="VIEW 2" />
-                </a>
+                
+                <div>
+                    <span>$</span>
+                    <a asp-controller="Demo" asp-action="View2" class="btn btn-link text-uppercase"
+                       style="text-decoration: none; padding:0;">View 2</a>
+                    <span>$</span>
+                </div>
+                
             </div>
 
         </div>

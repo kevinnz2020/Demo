@@ -1,0 +1,170 @@
+﻿@model Demo.Models.DiscountModel;
+@{
+    ViewData["Title"] = "View1";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var result = (Demo.Models.DiscountModel)ViewData["result"];
+
+}
+
+
+
+<form class="form-inline" asp-action="Index" method="post" >
+    <div asp-validation-summary="All"></div>
+
+    <div class="container">
+        <table class="table  table-bordered" style="width:50%;">
+            <thead>
+                <tr>
+                    <th colspan="2"><h1>Discount Calculator</h1></th>
+                </tr>
+                <tr>
+                    <th colspan="2"></th>
+                </tr>
+                <tr>
+                    <th colspan="2"><h3>Inputs</h3></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                   
+                    <td>
+
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Price</span>
+                            </div>
+                            <span class="input-group-text">$</span>
+                            <input type="text" class="form-control" asp-for="ListPrice" />
+                        </div>
+
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Discount</span>
+                            </div>
+
+                            <input type="text" class="form-control" asp-for="Discount" />
+                            <span class="input-group-text">%</span>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Weight</span>
+                            </div>
+                            <div class="input-group">
+
+
+
+                                <select asp-for="WeightId"
+                                        class="form-control"
+                                        asp-items="@(new SelectList(Model.WeightRanges,"Value", "Text"))">
+                                </select>
+
+
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+                
+            
+        </table>
+
+        
+        
+        
+        <br />
+       
+
+        
+    
+
+        <br />
+
+        <div class="row">
+            <div class="col-4"><strong>Output</strong></div>
+        </div>
+
+        <div class="row">
+            <div class="col-2">
+                <label asp-for="ListPrice">List Price</label>
+            </div>
+            <div class="input-group col-3">
+                <input type="text" class="form-control" asp-for="ListPrice" />
+                <span class="input-group-text">$</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2">
+                <label asp-for="LessDiscount">Less Discount</label>
+            </div>
+            <div class="input-group col-3">
+                <input type="text" class="form-control" asp-for=@result.LessDiscount />
+                <span class="input-group-text">$</span>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-2">
+                <label asp-for="AfterDiscount">After Discount</label>
+            </div>
+            <div class="input-group col-3">
+                <input type="text" class="form-control" asp-for=@result.AfterDiscount />
+                <span class="input-group-text">$</span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-2">
+                <label asp-for="PlusFreight">Plus Freight</label>
+            </div>
+            <div class="input-group col-3">
+                <input type="text" class="form-control" asp-for=@result.PlusFreight />
+                <span class="input-group-text">$</span>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-2">
+                <label asp-for="Net">Net</label>
+            </div>
+            <div class="input-group col-3">
+                <input type="text" class="form-control" asp-for=@result.Net />
+
+                <span class="input-group-text">$</span>
+            </div>
+        </div>
+
+        <br />
+
+        <div class="row d-flex justify-content-center">
+            <div class="col-3">
+                <button type="reset" class="btn btn-outline-primary mr-1">Reset</button>
+            </div>
+            <div class="col-3">
+                <button type="submit" class="btn btn-outline-danger">Submit</button>
+            </div>
+
+            <div class="col-3">
+
+                <a asp-controller="Demo" asp-action="View2">
+                    <input type="button" class="btn btn-outline-primary" value="VIEW 2" />
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+</form>

@@ -11,16 +11,14 @@ namespace Demo.Models
     {
         [Required]
         [Range(0.1, double.MaxValue, ErrorMessage ="Price must be greater than zero")]
-        [DisplayFormat(DataFormatString = "{0:n0}")]
+        [DisplayFormat(DataFormatString = "{0:n2}")]
         public decimal ListPrice { get; set; }
         [Required]
         [Range(0.1, double.MaxValue, ErrorMessage = "Discount must be greater than zero")]
-        [DisplayFormat(DataFormatString = "{0:n0}")]
+        [DisplayFormat(DataFormatString = "{0:n1}")]
         public int Discount { get; set; }
-        //[Required]
-        //[Range(0.1, 10, ErrorMessage = "Weight must be greater than zero and less than 11")]
-        //public decimal Weight { get; set; }
-        [DisplayFormat(DataFormatString = "{0:n0}")]
+       
+        [DisplayFormat(DataFormatString = "{0:n2}")]
         public decimal LessDiscount { get; set; }
        
         public decimal AfterDiscount { get; set; }

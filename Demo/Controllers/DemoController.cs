@@ -47,6 +47,13 @@ namespace Demo.Controllers
 
             return View(model);
         }
+        public IActionResult View1()
+        {
+            DiscountModel model = new DiscountModel();
+            model.WeightRanges = weightRanges.WeightList.ToList();
+
+            return View(model);
+        }
         [HttpPost]
         public JsonResult View2(string listprice, string discount,string weightId)
         {

@@ -9,16 +9,12 @@ namespace Demo.Interfaces
     public class DemoRepository : IDemoRepository
     {
         decimal freight;
-      
         public decimal Discount(decimal listPrice, decimal discount)
         {
             return (listPrice*discount) / 100;
         }
-
         public decimal Freight(string scale)
         {
-           
-
             switch (scale)
             {
                 case "1":
@@ -36,7 +32,6 @@ namespace Demo.Interfaces
                     freight = (decimal)18.5;
                     break;
             }
-
             return freight;
         }
     }
